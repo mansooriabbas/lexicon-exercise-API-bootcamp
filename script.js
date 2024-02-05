@@ -80,3 +80,14 @@ const booksWithCondition = async () => {
 };
 
 // booksWithCondition();
+const requestVisitors = async () => {
+  const res = await fetch("https://majazocom.github.io/Data/attendees.json");
+  const visitors = await res.json();
+  visitors.forEach((visitor) => {
+    if (visitor.attending === true && visitor.allergies.length >= 1) {
+      console.log(visitor);
+    }
+  });
+};
+
+requestVisitors();
